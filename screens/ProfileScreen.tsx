@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native'
 import React from 'react'
+import { logoutUser, getUserInfo } from '../services/authService'
+import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
 
     // TODO: handle logout
-    const handleLogout = () => {}
+    const handleLogout = () => {
+        logoutUser()
+    }
 
     return (
         <SafeAreaView>
@@ -12,9 +16,8 @@ const ProfileScreen = () => {
                 <Text>Profile</Text>
 
                 {/* TODO: Show logged in user info */}
-                <Text>Email here</Text>
-                <Text>Username here</Text>
-
+                <Text>{getUserInfo()?.email}</Text>
+                    <Text>{getUserInfo()?.uid}</Text> {/* or use displayName */}
                 <Button 
                     title="Sign Out"
                     color="green"
